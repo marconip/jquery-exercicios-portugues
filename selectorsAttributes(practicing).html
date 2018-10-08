@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel='stylesheet' href='css/style.css' type='text/css' />
+	<script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+	<title>jQuery tutorial practicing</title>
+</head>
+
+<body>
+	<h1>Selectors e Attributes</h1>
+
+	<section id="start">
+		<b>1) Get Content e Set Content - html (esse só muda conteúdo visivel no browser)</b>
+		<br/> Com selectores "first" e "last" pegar id="start"
+		<br/>Ao loading da página muda o texto "Start 01" para "Começou"
+		<br/> e ao clique no botão muda o texto "Start 02" para "Começar!"
+		<br/>
+		<br/>
+		<i>Start 01</i>
+		<br/>
+		<button id="btn">Mudar texto</button>
+		<i>Start 02</i>
+
+		<script>
+			$(function(){
+				$("#start i:first").html(" \"Começou\" ");
+				$("#btn").click(function(){
+					$("#start i:last").html("Começar!");
+				});
+			});
+		</script>
+	</section>
+
+	<section>
+		<b>2) Get Content e Set Content - text (esse muda tudo dentro da tag selecionada "conteúdo e tags")</b>
+		<br/> Muda/substitui textos e tags dentro da "div#test"
+		<br/>
+		<br/>
+		<div id="test">
+			esse é 
+			<b>todo</b>
+			<i>conteúdo</i> 
+			dessa tag!
+		</div>
+		<button id="btn4">Trocar texto</button>
+
+		<script>
+			$(function(){
+				$("#btn4").click(function(){
+					$("#test").text("Foi substituido as tags p, b, i");
+				});
+			});
+		</script>
+	</section>
+
+	<section>
+		<b>3) Attributes (mudando dentro de qualquer tag)</b>
+		<br/> Pega o atributo de "href" dentro da tag A e mostra um alerta
+		<br/> Troca o "href" do link.
+		<br/>
+		<br/>
+		<a href="http://www.sololearn.com">SOU UM LINK</a>
+		<br/>
+		<button id="btn2">Alerta link atual</button>
+		<button id="btn2b">Alerta novo Link</button>
+
+		<script>
+			$(function(){
+				$("#btn2").click(function(){
+					var link = $("a").attr("href");
+					alert(link);
+				});
+				$("#btn2b").click(function(){
+					$("a").attr("href","http://www.jquery.com");
+					var link = $("a").attr("href");
+					alert(link);
+				});
+			});
+		</script>
+	</section>
+
+	<section>
+		<b>4) Removing Attributes</b>
+		<br/> Removerá os atributos da tabela (borda e estilos) e o link do texto acima "sou um link".
+		<br/>
+		<br/>
+		<table border="5" style="background-color:aqua;font-weight:bold;">
+			<tr>
+				<td>one</td>
+				<td>two</td>
+			</tr>
+			<tr>
+				<td>three</td>
+				<td>four</td>
+			</tr>
+		</table>
+		<button id="btn3">Remover</button>
+
+		<script>
+			$(function(){
+				$("#btn3").click(function(){
+					$("table").removeAttr("border");
+					$("table").removeAttr("style");
+					$("a").removeAttr("href");
+				});
+			});
+		</script>
+	</section>
+	
+	<section>
+		<b>5) val() - Manipula campos de formulários, textboxes, dropdowns, e inputs similares.</b>
+		<br/> Pegar nome dentro do campo e exibir em um alerta.
+		<br/>
+		<input type="text" id="name" placeholder="escreva seu nome">
+		<button id="btn5">Alerta Nome</button>
+
+		<script>
+			$(function(){
+				$("#btn5").click(function(){
+					alert($("#name").val());
+				});
+			});
+		</script>
+	</section>
+
+	<section>
+		<b>6) Adding Content - "append" e "prepend"</b>
+		<br/> Adicionar conteúdo antes e depois do texto DENTRO DE TAG. Depois esconder o botão.
+		<br/><br/>
+		<div class="demo">
+			<i>amo</i>
+			<br/>
+			<i>amo</i>
+			<br/>
+			<i>amo</i>
+		</div>
+		<button id="btn6">Inserir</button>
+
+		<script>
+			$(function(){
+				$("#btn6").click(function(){
+					$(".demo i").prepend("Eu ");
+					$(".demo i").append(" você!");
+					$(this).hide();
+				});
+			});
+		</script>
+	</section>
+
+	<section>
+		<b>7) Adding Content - "AFTER" e "BEFORE"</b>
+		<br/> Adicionar conteúdo com tags (tag i e b), fora da tag selecionada.
+		<br/>
+		<br/>
+		<p id="demo2">Aluno</p>
+		<button id="btn7">Inserir</button>
+
+		<script>
+			$(function(){
+				$("#btn7").click(function(){
+					$("#demo2").before("<i>Seja um</i>");
+					$("#demo2").after("<b>dedicado</b><br/>");
+				});
+			});
+		</script>
+	</section>
+
+	<section>
+		<b>8) Adding Content - cria tags e adiciona conteúdo a elas, com uso de "after", "before", "append" e "prepend"</b>
+		<br/> Cria e insere um texto dentro da tag "i" antes do "Olá" e fora da tag do "olá";
+		<br/> Cria e insere um texto dentro da tag "b" depois do "Olá" e dentro da tag do "olá";
+		<br/><br/>
+		<p id="demo3">Olá</p>
+		<button id="btn8">Inserir</button>
+		
+		<script>
+			$(function(){
+				$("#btn8").click(function(){
+					var novo = $("<i></i>").text("novo texto com tag i");
+					$("#demo3").before(novo);
+					var novo2 = $("<b></b>").text(" novo texto com tag b");
+					$("#demo3").append(novo2);
+				});
+			});
+		</script>
+	</section>
+</body>
+
+</html>

@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel='stylesheet' href='css/style.css' type='text/css' />
+    <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+    <title>jQuery tutorial practicing</title>
+</head>
+
+<body>
+    <h1>Events - Common Events</h1>
+
+    <section>
+        <b>1) keyup</b>
+        <br/>Reflete as teclas que são digitadas
+        <br/>
+        <input type="text" id="name" />
+        <i id="msg"></i>
+
+        <script>
+            $(function () {
+                $("#name").keyup(function () {
+                    $("#msg").html($("#name").val());
+                });
+            });
+        </script>
+    </section>
+
+    <section>
+        <b>2) dblclick e on("FUNÇÃO",...</b>
+        <br/>Outra maneira de escrever a função com "on"
+        <br/>neste caso usar o duplo clique para mostrar alerta!
+        <p>
+            <i>Click Me 2x rápido</i>
+        </p>
+
+        <script>
+            $(function () {
+                $("p i").on("dblclick", function () {
+                    alert("duplo clique executado!");
+                });
+            });
+        </script>
+    </section>
+
+    <section>
+        <b>3) off()</b>
+        <br/>Cancela funções
+        <br/>
+        <br/>
+        <i id="desligar">Click Me - abrir alerta</i>
+        <br/>
+        <button id="btn">Cancelar event de click acima</button>
+
+        <script>
+            $(function () {
+                $("#desligar").click(function () {
+                    alert("Deslique essa função com: \noff()");
+                });
+                $("#btn").click(function () {
+                    $("#desligar").off("click");
+                });
+            });
+        </script>
+    </section>
+
+    <section>
+        <b>4) focus e blur </b>
+        <br/>focus - Ocorre quando o input esta em ação de digitação ou foi clicado dentro. Por cor de fundo amarelo.
+        <br/>blur - Ocorre quando sai do input que estava sendo usado (ditando/cliado dentro). Por cor de fundo verde claro.
+        <br/>
+        <input type="text" id="name2" />
+
+        <script>
+            $(function () {
+                $("#name2").focus(function () {
+                    $(this).css("background", "yellow");
+                });
+                $("#name2").blur(function () {
+                    $(this).css("background", "lightgreen");
+                })
+            });
+        </script>
+    </section>
+
+
+    <section>
+        <b>5) mouseleave e mouseenter</b>
+        <br/> No "mouseleave" do html, cria tag h2 e com texto "Você saiu da página :(" e insere apois a tag h1.
+        <br/> No "mouseenter" do html, remove a tag h2.
+        <br/> Para cancelar o modal (mouseleave), inserir um "if" no checkbox e cancela com "off()".
+        <br/>
+        <label id="check">
+            <input type="checkbox" name="check">
+            <i>Cancelar sair da página!</i>
+        </label>
+
+        <script>
+            $(function () {
+                $("html").mouseleave(function () {
+                    var novatag = $("<h2></h2>").text("Você saiu da página :(");
+                    $("h1").after(novatag);
+                });
+                $("html").mouseenter(function () {
+                    $("h2").remove();
+                });
+                $("input[name='check']").click(function () {
+                    if ($(this).is(":checked")) {
+                        $("html").off("mouseleave");
+                    };
+                });
+            });
+        </script>
+    </section>
+
+
+    <section>
+        <b>6) scroll</b>
+        <p>1- Fazer aparecer na página uma contagem da rolagem do conteúdo box;</p>
+        <p>2- Fazer a página voltar ao topo com clique no link e com animação de 900, prevenir a mudança na url</p>
+
+        <div id="rolagem">
+            <p>In my younger and more vulnerable years my father gave me some advice that I've been turning over in my mind
+                ever since.</p>
+            <p>I've been turning over in my mind ever since. In my younger and more vulnerable years my father gave me some
+                advice that, I've been turning over in my mind ever since. In my younger and more vulnerable years my father
+                gave me some advice that.</p>
+            <p>'Whenever you feel like criticizing anyone,' he told me, just remember that all the people in this world haven't
+                had the advantages that you've had. 'Whenever you feel like criticizing anyone I've been turning over in
+                my mind ever since. In my younger and more vulnerable years my father gave me some advice that</p>
+            <p>In my younger and more vulnerable years my father gave me some advice that I've been turning over in my mind
+                ever since.</p>
+            <p>I've been turning over in my mind ever since. In my younger and more vulnerable years my father gave me some
+                advice that, I've been turning over in my mind ever since. In my younger and more vulnerable years my father
+                gave me some advice that.</p>
+            <p>'Whenever you feel like criticizing anyone,' he told me, just remember that all the people in this world haven't
+                had the advantages that you've had. 'Whenever you feel like criticizing anyone I've been turning over in
+                my mind ever since. In my younger and more vulnerable years my father gave me some advice that</p>
+        </div>
+
+        <p>Scrolled
+            <span id="times">0</span> Vezes.
+        </p>
+        <a href="#" id="topPagina"> IR PARA TOPO DA PÁGINA</a>
+
+        <script>
+            $(function () {
+                var vezes = 0;
+                $("#rolagem").scroll(function () {
+                    $("#times").text(vezes += 1);
+                });
+
+                $("#topPagina").click(function (event) {
+                    $("html, body").animate({ scrollTop: 0 }, 900);
+                    event.preventDefault();
+                });
+            });
+        </script>
+    </section>
+
+
+    <section>
+        <b>7) To-Do List</b>
+        <p>Cria uma lista dinamica feita pelo campo de texto e apaga a lista recorrente ao clique no "X"</p>
+        <p>1- Ao click no adicionar cria um "if" e pega valor do input</p>
+        <p>2- se o input estiver vazio cria tag "li" com o texto pego do input</p>
+        <p>3- dentro da tag "li" adiciona um novo elemento tag "button" com classe chamada "rem" é escrito "X"</p>
+        <p>4- dentro da tag "ol" adiciona a tag "li"</p>
+        <p>5- limpa o texto dentro do input</p>
+        <p>6- cria um click no "x" do novo botão para remover o próprio</p>
+
+        <input type="text" id="campo" placeholder="Escreva um item" />
+        <button id="add">Adicionar</button>
+        <ol id="mylist"></ol>
+
+        <script>
+            $(function(){
+                $("#add").click(function(){
+                    var campoTxt = $("#campo").val();
+                    if(campoTxt !== ""){
+                        var tagli = $("<li></li>").text(campoTxt);//
+                        tagli.append("<button class='rem'>X</button>");
+                        $("#mylist").append(tagli);
+                        $("#campo").val("");
+                        $(".rem").click(function(){//
+                            $(this).parent().remove();//
+                        })
+                    }
+                });
+            });          
+        </script>
+    </section>
+</body>
+
+</html>

@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel='stylesheet' href='css/style.css' type='text/css' />
+    <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+    <title>jQuery tutorial practicing</title>
+</head>
+
+<body>
+    <h1>Manipulate DOM</h1>
+
+    <section>
+        <b>1) DOM Traversal - parent()</b>
+        <br/>Seleciona o elemento pai de P
+        <br/>
+        <br/>
+        <div class="div"> div elemento
+            <p class="p">paragrafo</p>
+        </div>
+        <button id="btn">Selecionar</button>
+
+        <script>
+            $(function () {
+                $("#btn").click(function () {
+                    $(".p").parent().css("border", "1px solid red");
+                })
+            });
+        </script>
+    </section>
+
+
+    <section>
+        <b>2) DOM Traversal - eq(2)</b>
+        <br/>Seleciona apenas o informado, neste caso a letra B
+        <br/>
+        <div id="multiplos">
+            <p>A</p>
+            <p>B *</p>
+            <p>C</p>
+        </div>
+        <button id="btn2">Selecionar B</button>
+
+        <script>
+            $(function () {
+                $("#btn2").click(function () {
+                    $("#multiplos p").eq(1).css("border", "1px solid red");
+                })
+            });
+        </script>
+    </section>
+
+
+    <section>
+        <b>3) DOM Traversal - com stopPropagation()</b>
+        <br/>Seleciona o pai do elemento clicado
+        <br/>
+        <div id="traversal" class="propagation">
+            div
+            <ul>ul
+                <li>li
+                    <p>paragrafo</p>
+                </li>
+            </ul>
+        </div>
+
+        <script>
+            $(function () {
+                $(".propagation *").click(function () {
+                    event.stopPropagation();
+                    $(this).parent().css("border", "1px solid red");
+                })
+            });
+        </script>
+    </section>
+
+
+    <section>
+        <b>4) DOM Traversal - parents()</b>
+        <br/>Seleciona todos os elementos pai de P
+        <br/>
+        <div id="traversal" class="parents">div
+            <ul>ul
+                <li>li
+                    <p>paragrafo</p>
+                </li>
+            </ul>
+        </div>
+        <button id="btn1">Selecionar os pais de p</button>
+
+        <script>
+            $(function () {
+                $("#btn1").click(function () {
+                    $(".parents p").parents().css("border", "1px solid red");
+                })
+            });
+        </script>
+    </section>
+
+
+    <section>
+        <b>5) DOM Traversal - siblings()</b>
+        <br/>Seleciona todos os elementos irmãos da tag "a" e remove. Usar evento "preventDefault()"
+        <br/>
+        <div id="traversal">
+            <a href="#">clique aqui e remova meus irmãos</a>
+            <h1>h1</h1>
+            <p>p</p>
+            <strong>strong</strong>
+        </div>
+
+        <script>
+            $(function () {
+                $("a").click(function (event) {
+                    event.preventDefault();
+                    $(this).siblings().remove();
+                })
+            });
+        </script>
+    </section>
+</body>
+
+</html>
