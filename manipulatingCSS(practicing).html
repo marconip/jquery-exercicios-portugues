@@ -20,11 +20,11 @@
         <button id="btnB">Remover CSS</button>
 
         <script>
-            $(function(){
-                $("#btnA").click(function(){
-                    $("#text").addClass("novaclasse outraclasse");                   
+            $(function () {
+                $("#btnA").click(function () {
+                    $("#text").addClass("novaclasse outraclasse");
                 });
-                $("#btnB").click(function(){
+                $("#btnB").click(function () {
                     $("#text").removeClass("novaclasse outraclasse");
                 });
             });
@@ -34,14 +34,14 @@
     <section>
         <b>2) Toggle Class - Adicionar e remover classes com clique no mesmo botão</b>
         <br/>Adicionar "outraclasse" e adicionar "preventDefault" para URL do navegador não mudar.
-        <p>Essas palavras vão pegar o novo CSS</p>
+        <p class="p">Essas palavras vão pegar o novo CSS</p>
         <button id="btn2">Adicionar e remover CSS</button>
 
         <script>
-            $(function(){
-                $("#btn2").click(function(e){
+            $(function () {
+                $("#btn2").click(function (e) {
                     e.preventDefault();
-                    $("p").toggleClass("outraclasse");
+                    $(".p").toggleClass("outraclasse");
                 });
             });
         </script>
@@ -49,6 +49,30 @@
 
     <section>
         <b>3) CSS Properties - Adiciona css diretamente na tag HTML</b>
+        <p>Pega css do box1 e compara com box2 (if), se for background diferente o segundo pega mesmo css do primeiro é adiciona uma nova classe.
+            <br/> a nova classe traz texto em cor preta.</p>
+        <div class="boxbg"> PEGAR essa cor de fundo</div>
+        <br/>
+        <div class="boxbg02"> mudar essa cor de fundo</div>
+
+        <button id="btnCor">trocar cor</button>
+
+        <script>
+            $(function () {
+                $("#btnCor").click(function () {
+                    var copia = $(".boxbg").css("background-color");
+                    var cola = $(".boxbg02").css("background-color");
+                    if (cola !== copia) {
+                        $(".boxbg02").css("background-color", copia);
+                        $(".boxbg02").addClass("newclass");
+                    };
+                });
+            });
+        </script>
+    </section>
+
+    <section>
+        <b>4) CSS Properties - Adiciona css diretamente na tag HTML</b>
         <br/>
         <br/>Adicionar removeAttr "style", depois alert "cor atual era: pega background color"
         <br/>alerta de novo com "mudou para: background-color".
@@ -58,8 +82,8 @@
         <br/>
 
         <script>
-            $(function(){
-                $("span").click(function(){
+            $(function () {
+                $("span").click(function () {
                     $(this).removeAttr("style");
                     alert("A cor de fundo era: " + $("span").css("background-color"));
                     $(this).css("background", "red");
@@ -70,7 +94,7 @@
     </section>
 
     <section>
-        <b>4) Multiple Properties - Adiciona varios css de uma única vez</b>
+        <b>5) Multiple Properties - Adiciona varios css de uma única vez</b>
         <br/>Inserir css inline no texto abaixo (background-color verde, font-size: 22px, color: branco. Depois remover com botão.
         <br/>
         <br/>
@@ -78,15 +102,15 @@
         <button id="btn3">remover CSS</button>
 
         <script>
-            $(function(){
-                $(".json").click(function(){
+            $(function () {
+                $(".json").click(function () {
                     $(this).css({
                         "background-color": "green",
                         "font-size": "22px",
                         "color": "white"
                     })
                 });
-                $("#btn3").click(function(){
+                $("#btn3").click(function () {
                     $(".json").removeAttr("style");
                 });
             });
@@ -94,7 +118,7 @@
     </section>
 
     <section>
-        <b>5) Dimensions - width() e height()</b>
+        <b>6) Dimensions - width() e height()</b>
         <br/>Adicionar/mudar largura e altura de um elemento.
         <br/>Colocar o box com 100x100px e escrevar o tamanho dentro dele.
         <br/>
@@ -102,8 +126,8 @@
         <button id="btn4">Mudar box</button>
 
         <script>
-            $(function(){
-                $("#btn4").click(function(){                    
+            $(function () {
+                $("#btn4").click(function () {
                     $(".box").width(100);
                     $(".box").height(100);
 
@@ -118,24 +142,25 @@
     </section>
 
     <section>
-        <b>6) Dimensions - innerWidth(), outerWidth(), innerHeight(), outerHeight()</b>
+        <b>7) Dimensions - innerWidth(), outerWidth(), innerHeight(), outerHeight()</b>
         <br/>inner = Retorna a largura/altura do elemento mais a somando com tomanho interno (padding).
         <br/>outer = Retorna a largura/altura do elemento mais a somando com tomanho externo (borda) e padding.
         <br/>Obs: não faz soma com a margem.
 
-        <br/><br/>Mostrar a real dimensão desse box abaixo
+        <br/>
+        <br/>Mostrar a real dimensão desse box abaixo
         <div id="box2"></div>
         <button id="btn5">Ver real dimensão</button>
 
         <script>
-            $(function(){
-                $("#btn5").click(function(){
+            $(function () {
+                $("#btn5").click(function () {
                     var mostrar = "";
 
                     mostrar = "Tamanho: " + $("#box2").width() + "x" + $("#box2").height() + "px <br/><br/>";
-                    mostrar += "Largura interna: "+ $("#box2").innerWidth() + "px <br/>";
+                    mostrar += "Largura interna: " + $("#box2").innerWidth() + "px <br/>";
                     mostrar += "Altura interna: " + $("#box2").innerHeight() + "px <br/><br/>";
-                    mostrar += "Largura interna + externa: "+ $("#box2").outerWidth() + "px <br/>";
+                    mostrar += "Largura interna + externa: " + $("#box2").outerWidth() + "px <br/>";
                     mostrar += "Altura interna + externa: " + $("#box2").outerHeight() + "px <br/>";
 
                     $("#box2").html(mostrar);

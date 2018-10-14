@@ -119,3 +119,39 @@ h2 {
 #mylist li {
   height: 30px;
 }
+
+.boxclick {
+  cursor: pointer;
+  padding: 10px;
+  background: #999;
+}
+
+.boxbg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  background: #fff;
+}
+
+.boxbg02 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  background: #000;
+  color: #fff;
+}
+
+.newclass {
+  color: #000;
+}
+
+.queue {
+  background: darkblue;
+  height:50px;
+  width: 50px;
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.5;
+}

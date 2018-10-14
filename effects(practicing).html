@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel='stylesheet' href='css/style.css' type='text/css' />
+    <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+    <title>jQuery tutorial practicing</title>
+</head>
+
+<body>
+    <h1>Effects</h1>
+
+    <section>
+        <b>1) Hide/Show</b>
+        <p>é usado para hiding (esconder) e showing (mostrar) elementos.</p>
+        <p>animation speed - o 1º sem tempo de animação e outro com o tempo</p>
+
+        <p class="boxclick first">Click to toggle show/hide</p>
+        <div style="height:56px">
+            <div class="boxbg divfirst">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat.
+            </div>
+        </div>
+        <br/>
+        <br/>
+        <p class="boxclick dois">Click to toggle show/hide ANIMATION</p>
+        <div style="height:56px">
+            <div class="boxbg divdois">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat.
+            </div>
+        </div>
+
+        <script>
+            $(function () {
+                $(".first").click(function () {
+                    $(".divfirst").toggle();
+                });
+                $(".dois").click(function () {
+                    $(".divdois").toggle(1000);
+                });
+            });
+        </script>
+    </section>
+
+    <section>
+        <b>2) Fade In/Out</b>
+        <p>é usado para esconder e mostrar elementos com animação de opacidade.</p>
+
+        <i class="boxclick fades">Click to toggle fading</i>
+        <br/>
+        <br/>
+        <div style="height:56px;margin-bottom:20px">
+            <div class="boxbg fading" style="height: 56px">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat.
+            </div>
+        </div>
+
+        <script>
+            $(function () {
+                $(".fades").click(function () {
+                    $(".fading").fadeToggle(1000);
+                });
+            });
+        </script>
+    </section>
+
+    <section>
+        <b>3) Slide Up/Down</b>
+        <p>é usado para esconder e mostrar elementos com animação de subir e descer vice-versa.</p>
+
+        <b class="boxclick slides">Click to toggle slide</b>
+        <br/>
+        <br/>
+        <div style="height:56px">
+            <div class="boxbg slide" style="display: none">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat.
+            </div>
+        </div>
+
+        <script>
+            $(function () {
+                $(".slides").click(function () {
+                    $(".slide").slideToggle(500);
+                });
+            });
+        </script>
+    </section>
+
+    <section>
+        <b>4) animate()</b>
+        <p>animando valores. O 1º botão diminui apenas com 1 click, e o outro aumenta a cada click</p>
+        <button type="button" id="diminuir">Animação diminuir 1x</button>
+        <br/>
+        <div class="boxbg animate">animação</div>
+        <button type="button" id="aumentar">Animação aumentar a cada click</button>
+
+        <script>
+            $(function () {
+                $("#diminuir").click(function () {
+                    $(".animate").animate({
+                        width: '50px',
+                        height: '50px'
+                    }, 2000);
+                });
+
+                $("#aumentar").click(function () {
+                    $(".animate").animate({
+                        width: '+=50px',
+                        height: '+=50px'
+                    }, 2000);
+                });
+            });
+        </script>
+    </section>
+
+    <section>
+        <b>5) Animation Queue - Segue uma seguência de animação uma após a outra</b>
+        <p>iserir "animate" opacity, height, width, bottom e left tudo em 100px, primeiro "+=" depois "-=", velocidade 500 </p>
+        <button type="button" id="queue">Animar bolinha</button>
+        <div class="queue"></div>
+
+        <script>
+            $(function () {
+                $("#queue").click(function () {
+                    var div = $(".queue");
+                    div.animate({ opacity: 1 });
+                    div.animate({ height: '+=100px', width: '+=100px', bottom: '+=100px' }, 500);
+                    div.animate({ height: '-=100px', width: '-=100px', left: '+=100px' }, 500);
+                    div.animate({ height: '+=100px', width: '+=100px', bottom: '-=100px' }, 500);
+                    div.animate({ height: '-=100px', width: '-=100px', left: '-=100px' }, 500);
+                    div.animate({ opacity: 0.5 });
+                });
+            }); 
+        </script>
+    </section>
+
+</body>
+
+</html>
