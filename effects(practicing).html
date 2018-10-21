@@ -15,7 +15,7 @@
     <section>
         <b>1) Hide/Show</b>
         <p>é usado para hiding (esconder) e showing (mostrar) elementos.</p>
-        <p>animation speed - o 1º sem tempo de animação e outro com o tempo</p>
+        <p>animation speed - o 1º sem tempo de animação e outro com o tempo de 1000.</p>
 
         <p class="boxclick first">Click to toggle show/hide</p>
         <div style="height:56px">
@@ -39,6 +39,7 @@
                 $(".first").click(function () {
                     $(".divfirst").toggle();
                 });
+
                 $(".dois").click(function () {
                     $(".divdois").toggle(1000);
                 });
@@ -47,7 +48,7 @@
     </section>
 
     <section>
-        <b>2) Fade In/Out</b>
+        <b>2) Fade In/Out - fadeToggle</b>
         <p>é usado para esconder e mostrar elementos com animação de opacidade.</p>
 
         <i class="boxclick fades">Click to toggle fading</i>
@@ -63,14 +64,14 @@
         <script>
             $(function () {
                 $(".fades").click(function () {
-                    $(".fading").fadeToggle(1000);
-                });
+                    $(".fading").fadeToggle();
+                })
             });
         </script>
     </section>
 
     <section>
-        <b>3) Slide Up/Down</b>
+        <b>3) Slide Up/Down - slideToggle</b>
         <p>é usado para esconder e mostrar elementos com animação de subir e descer vice-versa.</p>
 
         <b class="boxclick slides">Click to toggle slide</b>
@@ -86,15 +87,15 @@
         <script>
             $(function () {
                 $(".slides").click(function () {
-                    $(".slide").slideToggle(500);
-                });
+                    $(".slide").slideToggle();
+                })
             });
         </script>
     </section>
 
     <section>
         <b>4) animate()</b>
-        <p>animando valores. O 1º botão diminui apenas com 1 click, e o outro aumenta a cada click</p>
+        <p>animando valores. O 1º botão diminui apenas com 1 click, e o outro aumenta a cada click com tempo de 2000</p>
         <button type="button" id="diminuir">Animação diminuir 1x</button>
         <br/>
         <div class="boxbg animate">animação</div>
@@ -104,24 +105,27 @@
             $(function () {
                 $("#diminuir").click(function () {
                     $(".animate").animate({
-                        width: '50px',
-                        height: '50px'
+                        width: "50px",
+                        height: "50px"
                     }, 2000);
                 });
 
                 $("#aumentar").click(function () {
                     $(".animate").animate({
-                        width: '+=50px',
-                        height: '+=50px'
+                        width: "+=50px",
+                        height: "+=50px"
                     }, 2000);
                 });
             });
         </script>
     </section>
 
-    <section>
+    <section style="height:230px;">
         <b>5) Animation Queue - Segue uma seguência de animação uma após a outra</b>
-        <p>iserir "animate" opacity, height, width, bottom e left tudo em 100px, primeiro "+=" depois "-=", velocidade 500 </p>
+        <p>Fazer a bolinha ir para direita com animação ir para cima e para baixo 2x, durante a animação perde a transparência.
+        </p>
+        <p>iserir "animate" com: opacity, height, width, bottom e left tudo em 100px, primeiro "+=" depois "-=", velocidade
+            500 </p>
         <button type="button" id="queue">Animar bolinha</button>
         <div class="queue"></div>
 
@@ -130,13 +134,36 @@
                 $("#queue").click(function () {
                     var div = $(".queue");
                     div.animate({ opacity: 1 });
-                    div.animate({ height: '+=100px', width: '+=100px', bottom: '+=100px' }, 500);
-                    div.animate({ height: '-=100px', width: '-=100px', left: '+=100px' }, 500);
-                    div.animate({ height: '+=100px', width: '+=100px', bottom: '-=100px' }, 500);
-                    div.animate({ height: '-=100px', width: '-=100px', left: '-=100px' }, 500);
+                    div.animate({ height: "+=100px", width: "+=100px", bottom: "+=100px", left: "+=100px" }, 500);
+                    div.animate({ height: "-=100px", width: "-=100px", bottom: "-=100px", left: "+=100px" }, 500);
+                    div.animate({ height: "+=100px", width: "+=100px", bottom: "+=100px", left: "+=100px" }, 500);
+                    div.animate({ height: "-=100px", width: "-=100px", bottom: "-=100px", left: "+=100px" }, 500);
                     div.animate({ opacity: 0.5 });
+                })
+            });
+        </script>
+    </section>
+
+    <section style="height:230px;">
+        <b>6) Drop-Down Menu</b>
+        <p>Cria simples menu que abre e fecha ao click com tepo de 500 e ao click nos links do menu prevenir de mudar a URL</p>
+
+        <div id="item">Dropdown menu</div>
+        <div id="submenu">
+            <a href="#">Link 1</a>
+            <a href="#">Link 2</a>
+            <a href="#">Link 3</a>
+        </div>
+
+        <script>
+            $(function () {
+                $("#item").click(function () {
+                    $("#submenu").slideToggle(500);
                 });
-            }); 
+                $("#submenu").click(function (event) {
+                    event.preventDefault();
+                });
+            });
         </script>
     </section>
 

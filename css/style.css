@@ -124,6 +124,7 @@ h2 {
   cursor: pointer;
   padding: 10px;
   background: #999;
+  font-weight: bold;
 }
 
 .boxbg {
@@ -148,10 +149,42 @@ h2 {
 }
 
 .queue {
-  background: darkblue;
-  height:50px;
+  background: darkred;
+  height: 50px;
   width: 50px;
   position: absolute;
   border-radius: 50%;
   opacity: 0.5;
+}
+
+/**Dropdown menu*/
+
+#item {
+  background-color: darkred;
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+  display: inline-block;
+}
+
+#item:hover {
+  background-color: black;
+}
+
+#submenu {
+  display: none;
+  position: absolute;
+  min-width: 128px;
+  background-color: darkred;
+}
+
+#submenu a {
+  color: white;
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+}
+
+#submenu a:hover {
+  background-color: black;
 }
