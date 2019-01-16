@@ -19,17 +19,21 @@
 
         <p class="boxclick first">Click to toggle show/hide</p>
         <div style="height:56px">
-            <div class="boxbg divfirst">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            <div class="boxbg divfirst">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                incididunt ut labore et dolore
+                magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                commodo
                 consequat.
             </div>
         </div>
-        <br/>
-        <br/>
+        <br />
+        <br />
         <p class="boxclick dois">Click to toggle show/hide ANIMATION</p>
         <div style="height:56px">
-            <div class="boxbg divdois">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            <div class="boxbg divdois">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                incididunt ut labore et dolore
+                magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                commodo
                 consequat.
             </div>
         </div>
@@ -52,11 +56,13 @@
         <p>é usado para esconder e mostrar elementos com animação de opacidade.</p>
 
         <i class="boxclick fades">Click to toggle fading</i>
-        <br/>
-        <br/>
+        <br />
+        <br />
         <div style="height:56px;margin-bottom:20px">
-            <div class="boxbg fading" style="height: 56px">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            <div class="boxbg fading" style="height: 56px">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                do eiusmod tempor incididunt ut labore et dolore
+                magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                commodo
                 consequat.
             </div>
         </div>
@@ -75,11 +81,13 @@
         <p>é usado para esconder e mostrar elementos com animação de subir e descer vice-versa.</p>
 
         <b class="boxclick slides">Click to toggle slide</b>
-        <br/>
-        <br/>
+        <br />
+        <br />
         <div style="height:56px">
-            <div class="boxbg slide" style="display: none">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            <div class="boxbg slide" style="display: none">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                do eiusmod tempor incididunt ut labore et dolore
+                magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                commodo
                 consequat.
             </div>
         </div>
@@ -97,7 +105,7 @@
         <b>4) animate()</b>
         <p>animando valores. O 1º botão diminui apenas com 1 click, e o outro aumenta a cada click com tempo de 2000</p>
         <button type="button" id="diminuir">Animação diminuir 1x</button>
-        <br/>
+        <br />
         <div class="boxbg animate">animação</div>
         <button type="button" id="aumentar">Animação aumentar a cada click</button>
 
@@ -122,9 +130,11 @@
 
     <section style="height:230px;">
         <b>5) Animation Queue - Segue uma seguência de animação uma após a outra</b>
-        <p>Fazer a bolinha ir para direita com animação ir para cima e para baixo 2x, durante a animação perde a transparência.
+        <p>Fazer a bolinha ir para direita com animação ir para cima e para baixo 2x, durante a animação perde a
+            transparência.
         </p>
-        <p>iserir "animate" com: opacity, height, width, bottom e left tudo em 100px, primeiro "+=" depois "-=", velocidade
+        <p>iserir "animate" com: opacity, height, width, bottom e left tudo em 100px, primeiro "+=" depois "-=",
+            velocidade
             500 </p>
         <button type="button" id="queue">Animar bolinha</button>
         <div class="queue"></div>
@@ -146,7 +156,8 @@
 
     <section style="height:230px;">
         <b>6) Drop-Down Menu</b>
-        <p>Cria simples menu que abre e fecha ao click com tepo de 500 e ao click nos links do menu prevenir de mudar a URL</p>
+        <p>Cria simples menu que abre e fecha ao click com tempo de 500, e ao clicar nos links do menu prevenir de mudar a
+            URL com evento "preventDefault", também troca a classe "active" destacando o menu clicado. </p>
 
         <div id="item">Dropdown menu</div>
         <div id="submenu">
@@ -160,7 +171,10 @@
                 $("#item").click(function () {
                     $("#submenu").slideToggle(500);
                 });
-                $("#submenu").click(function (event) {
+                
+                $('#submenu a').click(function (event) {
+                    $('#submenu a').addClass('active').removeClass('active');                    
+                    $(this).addClass('active');
                     event.preventDefault();
                 });
             });

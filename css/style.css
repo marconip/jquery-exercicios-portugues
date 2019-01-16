@@ -185,6 +185,6 @@ h2 {
   text-decoration: none;
 }
 
-#submenu a:hover {
+#submenu a:hover, .active {
   background-color: black;
 }
